@@ -10,5 +10,8 @@ jobs:
     steps:
       - name: Log issue title
         run: |
-          echo "New issue title is: ${{ github.event.issue.title }}"
+          env:
+             ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          echo "New issue title is $ISSUE_TITLE"
 
