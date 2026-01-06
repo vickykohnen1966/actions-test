@@ -9,9 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log issue title
-        run: |
-          env:
-             ISSUE_TITLE: ${{ github.event.issue.title }}
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
           echo "New issue title is $ISSUE_TITLE"
 
