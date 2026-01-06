@@ -1,0 +1,21 @@
+name: Security Gatekeeper
+
+on: [push]
+
+jobs:
+  file-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Scan for sensitive files
+        run: |
+          if [ -f passwords.txt ]; then
+            echo "CRITICAL SECURITY ERROR: passwords.txt found in root!"
+            exit 1
+          else
+            echo "No prohibited files detected. Proceeding..."
+            exit 0
+          fi
+
