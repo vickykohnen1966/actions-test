@@ -1,0 +1,14 @@
+name: Issue Logger (Vulnerable Version)
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  log-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log issue title
+        run: |
+        echo "New issue title is: ${{ github.event.issue.title }}"
+
